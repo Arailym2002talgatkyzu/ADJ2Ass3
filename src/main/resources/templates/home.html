@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME PAGE</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        h1{
+            text-align: center;
+        }
+        .form{
+            margin-left: 40%;
+            margin-top: 10%;
+            border-radius:10px;
+            background-color: aqua;
+           height: 200px;
+            width: 300px;
+        }
+        .form button{
+            margin-top: 50px;
+            margin-left: 100px;
+            border: darkviolet 2px solid;
+            background-color: yellow;
+            border-radius: 5px;
+            width: 100px;
+            padding: 10px;
+            color: darkviolet;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>HOME PAGE</h1>
+<div class="form">
+<button><a th:href="@{/login}"/>LOGIN</button>
+<button><a th:href="@{/signup}"/>SIGN UP</button>
+</div>
+</body>
+</html>

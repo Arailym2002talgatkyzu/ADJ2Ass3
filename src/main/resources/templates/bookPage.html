@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>USER PAGE</title>
+</head>
+<body>
+<h1>BOOK PAGE</h1>
+
+<div th:each="book : ${book}" class="alert alert-info mt-0">
+    <h4 th:text="${book.name}"/>
+    <p><b>Author: </b><span th:text="${book.author}"/></p>
+    <p><b>Count: </b><span th:text="${book.count}"/></p>
+</div>
+
+<button class="logout" >
+    <a th:href="@{/logout}">Logout</a>
+</button>
+</body>
+</html>

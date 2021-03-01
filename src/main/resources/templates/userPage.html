@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>USER PAGE</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        .flexBox{
+            display: flex;
+            background: aquamarine;
+
+        }
+        .logout{
+            width: 100px;
+            height: 40px;
+            margin-left: 75%;
+            margin-top: 20px;
+            background-color: lightcoral;
+            border-radius: 6px;
+            color: white;
+        }
+
+    </style>
+</head>
+
+<div class="flexBox">
+<h1 style="margin-left: 10px;">USER PAGE</h1>
+<button class="logout" >
+    <a th:href="@{/logout}" style="text-decoration: none">LOGOUT</a>
+</button>
+</div>
+<div th:each="user : ${user}" >
+    <p><b>Username: </b><span th:text="${user.username}"/></p>
+    <p><b>Name: </b><span th:text="${user.name}"/></p>
+    <p><b>Surname: </b><span th:text="${user.surname}"/></p>
+</div>
+
+<button style="background-color:aquamarine; border-radius: 5px; padding: 10px; "><a th:href="'/borrow/'+${user.username}" style="text-decoration: none">Borrow a Book</a></button>
+
+
+<h2 style="text-align: center">List of Borrowed Books</h2>
+<div  th:each="book : ${books}" th:if="${book.deleted == false}">
+    <a th:href="'/book/' + ${book.isbn}"><h4 th:text="${book.name}"/></a>
+</div><br>
+
+<p></p>
+<h2 style="text-align: center">List of All Books</h2>
+<div  th:each="book : ${allbooks}" th:if="${book.deleted == false}" class="alert alert-info mt-0" >
+    <a th:href="'/book/' + ${book.isbn}"><span th:text="${book.name}"/></a> - <span th:text="${book.count}"/>
+</div>
+
+</body>
+</html>

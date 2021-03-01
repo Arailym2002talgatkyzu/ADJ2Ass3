@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+<H1>ADMIN PAGE</H1>
+<h3>Add User</h3>
+<form method="POST"  th:action="@{/admin/addUser}">
+    <input type="text" name="username" placeholder="username">
+    <input type="text" name="name" placeholder="name">
+    <input type="text" name="surname" placeholder="surname">
+    <input type="password" name="password" placeholder="password">
+    <input type="submit" class="submit" value="Submit">
+</form>
+
+<h3>List of Users</h3>
+<div th:each="user : ${users}" th:if="${user.deleted==false}">
+    <a th:href="'/admin/user/'+${user.username}"><span th:text="${user.getUsername()}"/></a>
+    <a th:href="'/admin/'+${user.username}+'/edit'"><input type="submit" name="update" value="update"/></a>
+    <a th:href="'/admin/'+${user.username}+'/delete'"><input type="submit" name="delete" value="delete"/></a>
+</div><br>
+
+<h3>Add Book</h3>
+<form method="POST"  th:action="@{/admin/addBook}">
+    <input type="text" placeholder="ISBN" name="isbn">
+    <input type="text" placeholder="Name" name="name">
+    <input type="text" placeholder="Author" name="author">
+    <input type="number" placeholder="Counts" name="counts">
+    <input type="submit" value="submit">
+</form>
+
+<h3>List of Books</h3>
+<div th:each="book : ${allbooks}" th:if="${book.deleted == false}" class="alert alert-info mt-0">
+    <a th:href="'/book/' + ${book.isbn}"><span th:text="${book.name}"/></a>
+    <a th:href="'/admin/book/'+${book.isbn}+'/edit'"><input type="submit" name="update" value="update"/></a>
+    <a th:href="'/admin/book/'+${book.isbn}+'/delete'"><input type="submit" name="delete" value="delete"/></a>
+</div><br>
+
+<form name = "l" method="post" th:action="@{/logout}">
+    <input type="submit" value="Logout" name="logout"><br>
+
+</form>
+
+</body>
+</html>

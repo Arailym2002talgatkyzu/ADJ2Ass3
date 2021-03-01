@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrow a Book</title>
+</head>
+<body>
+<h1>Borrow a Book</h1>
+<form th:method="POST" th:object="${books}">
+    <h3>List of Books</h3>
+    <div th:each="book : ${books}">
+        <input type="checkbox" name="isbn" th:value="${book.isbn}"><span th:text="${book.name}"/>
+        <span th:text="${book.count}"/>
+    </div>
+    <input type="submit" value="Borrow">
+</form>
+</body>
+</html>
